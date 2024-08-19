@@ -1,7 +1,7 @@
 {
     "functions": {
       "api/proxy.js": {
-        "runtime": "nodejs18.x" // Specify the Node.js version
+        "runtime": "nodejs18.x" 
       }
     }
   }
