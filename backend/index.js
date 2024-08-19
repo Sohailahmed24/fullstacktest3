@@ -22,7 +22,7 @@ app.use('/', (req, res) => {
     req.pipe(request(url)).pipe(res);
 });
 
-const PORT = process.env.PORT || 8000;
+const PORT =  8000;
 app.listen(PORT, () => {
     console.log(`CORS proxy server running on port ${PORT}`);
 });  
