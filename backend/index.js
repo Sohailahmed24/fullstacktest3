@@ -16,12 +16,15 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
 app.use('/', (req, res) => {
     const url = req.url.substring(1);
-    req.pipe(request(url)).pipe(res);
+    request(url)
+        .on('error', (err) => {
+            console.error(`Request error: ${err.message}`);
+            res.status(500).send('Internal Server Error');
+        })
+        .pipe(res);
 });
-
 const PORT =  8000;
 app.listen(PORT, () => {
     console.log(`CORS proxy server running on port ${PORT}`);
