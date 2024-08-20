@@ -1,32 +1,13 @@
-const express = require('express');
-const cors = require('cors');
-const request = require('request');
-const dotenv = require('dotenv');
+
+const express=require("express")
+const app=express()
+const port=process.env.PORT || 8000;
 
 
-dotenv.config();
+app.get("/",(req,res)=>{
+    res.send("Server Start Now")
+})
 
-
-const app = express();
-const corsOptions = {
-    origin: ['http://localhost:1234',"https://react-planet.vercel.app/"],
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Addresskey', 'X-Content', 'X-Experience', 'X-Lat', 'X-Lng', 'X-Locale', 'X-Mp', 'X-Platform', 'X-Visitor-Id'],
-    credentials: true
-};
-
-app.use(cors(corsOptions));
-app.use('/', (req, res) => {
-    const url = req.url.substring(1);
-    request(url)
-        .on('error', (err) => {
-            console.error(`Request error: ${err.message}`);
-            res.status(500).send('Internal Server Error');
-        })
-        .pipe(res);
-});
-const PORT =  8000;
-app.listen(PORT, () => {
-    console.log(`CORS proxy server running on port ${PORT}`);
-});  
-
+app.listen(port,()=>{
+    console.log(`server run on port  ${port}`)
+})

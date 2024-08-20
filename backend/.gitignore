@@ -36,3 +36,4 @@ sketch/                     # Sketch files
 *.swp                       # Swap files (from editors like Vim)
 *.swo                       # Swap files (from editors like Vim)
 *.idea/                     # IntelliJ IDEA project files
+.env
